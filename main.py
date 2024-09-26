@@ -139,7 +139,12 @@ def twitterLetConnect(driver):
                 sleep(1)
 
                 # comment on tweet
-                commentButton = tweet.find_element(By.XPATH, ".//button[@data-testid='reply']")
+                commentButton = None
+                try:
+                    commentButton = tweet.find_element(By.XPATH, ".//button[@data-testid='reply']")
+                except StaleElementReferenceException:
+                    continue
+
                 driver.execute_script("arguments[0].click();", commentButton)
 
                 # shit ass communities make it crash
@@ -172,7 +177,8 @@ def main():
     driver.maximize_window()
 
     try:
-        twitterLogin(driver, "AntiG_Fehlinger", "abdulrazackkarimouousame")
+        # twitterLogin(driver, "AntiG_Fehlinger", "abdulrazackkarimouousame1")
+        twitterLogin(driver, "name", "pw")
         twitterLetConnect(driver)
     finally:
         driver.quit()
