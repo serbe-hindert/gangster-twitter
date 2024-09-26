@@ -177,7 +177,6 @@ def main():
     driver.maximize_window()
 
     try:
-        # twitterLogin(driver, "AntiG_Fehlinger", "abdulrazackkarimouousame1")
         twitterLogin(driver, "name", "pw")
         twitterLetConnect(driver)
     finally:
